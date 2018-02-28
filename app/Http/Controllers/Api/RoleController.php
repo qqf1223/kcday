@@ -28,7 +28,7 @@ class RoleController extends KcApiController
 
     public function save(RoleRequest $request)
     {
-        $form_data = $request->except(['_token', '_method']);dd($form_data);
+        $form_data = $request->except(['_token', '_method']);
 
         $result = $this->_roleService->createRole($form_data);
 

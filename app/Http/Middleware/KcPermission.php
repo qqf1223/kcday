@@ -26,6 +26,10 @@ class KcPermission
         return $next($request);
     }
 
+    /**
+     * 获取所有权限节点
+     * @return mixed
+     */
     public function authPermissionMenu()
     {
         $data = [];
@@ -73,6 +77,9 @@ class KcPermission
         return $data;
     }
 
+    /**
+     * 获取授权菜单
+     */
     public function getPermissions()
     {
         return Cache::store('file')->rememberForever('admin_permission', function(){

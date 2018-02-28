@@ -1,13 +1,13 @@
 @extends('layouts.main')
 @section('css')
-    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet" />
+    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet"/>
 @stop
 @section('js')
     <script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script>
         var dataTable = null;
-        $(function(){
+        $(function () {
             //数据表格
             dataTable = $("#dataTable").DataTable({
                 //配置
@@ -16,22 +16,22 @@
                 "searching": false,
                 "lengthChange": false,
                 "autoWidth": false,
-                "fnServerData" : function(sSource, aoData, fnCallback){
+                "fnServerData": function (sSource, aoData, fnCallback) {
                     var sSearch = $('#sSearch').val();
-                    aoData.push({"name":"sSearch", "value":sSearch});
+                    aoData.push({"name": "sSearch", "value": sSearch});
                     $.ajax({
-                        url:sSource,
-                        data:aoData,
+                        url: sSource,
+                        data: aoData,
                         type: "post",
                         dataType: "json",
                         async: false,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        success: function(result){
+                        success: function (result) {
                             fnCallback(result);
                         },
-                        error: function(result){
+                        error: function (result) {
                             console.log(result);
                         }
                     });
@@ -60,27 +60,27 @@
                     [3]
                 ],
                 "aoColumns": [
-                    { "data": "id" },
-                    { "data": "emp_name", "bSortable": false },
-                    { "data": "dept_id", "bSortable": false },
-                    { "data": "gender" , "bSortable": false},
-                    { "data": "email", "bSortable": false  },
-                    { "data": "mtime", "bSortable": false },
-                    { "data": "id", "bSortable": false },
+                    {"data": "id"},
+                    {"data": "emp_name", "bSortable": false},
+                    {"data": "dept_id", "bSortable": false},
+                    {"data": "gender", "bSortable": false},
+                    {"data": "email", "bSortable": false},
+                    {"data": "mtime", "bSortable": false},
+                    {"data": "id", "bSortable": false},
                 ],
-                "columnDefs" : [
+                "columnDefs": [
                     //规则
                     {
-                        "render" : function(data){
-                            return '<div style="word-wrap:break-word;" >'+data+'</div>'
+                        "render": function (data) {
+                            return '<div style="word-wrap:break-word;" >' + data + '</div>'
                         },
-                        "sWidth" : "100px",
+                        "sWidth": "100px",
                         "targets": 2
                     },
                     //是否菜单
                     {
-                        "render" : function(data) {
-                            if(data == 1){
+                        "render": function (data) {
+                            if (data == 1) {
                                 return "<span class='btn btn-danger btn-xs'>否</span>";
                             }
                             return "";
@@ -89,17 +89,17 @@
                     },
                     //操作
                     {
-                        "render" : function(data, type, row) {
-                            if(data > 0) {
+                        "render": function (data, type, row) {
+                            if (data > 0) {
                                 var opt_html = '';
                                 @if(adminAuth('adminUser.show'))
-                                        opt_html += "<a href='{{ url('adminUser/show') }}/"+data+"' class='X-Small btn-xs text-info'><i class='fa fa-send'></i> 详情</a>";
+                                        opt_html += "<a href='{{ url('adminUser/show') }}/" + data + "' class='X-Small btn-xs text-info'><i class='fa fa-send'></i> 详情</a>";
                                 @endif
                                         @if(adminAuth('adminUser.edit'))
-                                        opt_html += "<a href='{{ url('adminUser/edit') }}/"+data+"' class='X-Small btn-xs text-success'><i class='fa fa-edit'></i> 编辑</a>";
+                                        opt_html += "<a href='{{ url('adminUser/edit') }}/" + data + "' class='X-Small btn-xs text-success'><i class='fa fa-edit'></i> 编辑</a>";
                                 @endif
                                         @if(adminAuth('adminUser.delete'))
-                                        opt_html += "<a href='javascript:;' onclick='delUser("+data+")' class='X-Small btn-xs text-danger'><i class='fa fa-times-circle'></i> 删除</a>";
+                                        opt_html += "<a href='javascript:;' onclick='delUser(" + data + ")' class='X-Small btn-xs text-danger'><i class='fa fa-times-circle'></i> 删除</a>";
                                 @endif
                                         return opt_html;
                             }
@@ -113,39 +113,43 @@
     <script type="text/javascript" src="{{ asset('/js/default/adminUser.js') }}"></script>
 @stop
 @section('content')
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header" style="text-align:right;">
+                    <h5 class="pull-left">用户列表</h5>
 
-
-    <div class="row head">
-        <div class="col-xs-4 col-md-3">
-            <form class="form-horizontal">
-                <div class="input-group">
-                    <input type="text" class="form-control input-sm" name="sSearch" id="sSearch" placeholder="{{ trans('user.user_name')  }}" >
-                <span class="input-group-btn">
-                    <button class="btn btn-primary btn-sm" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
-                </span>
+                    <div class="pull-right" style="margin-left:5px;">
+                        <button type="button" class="btn btn-primary" onclick="location.href='{{ url('adminUser/add') }}'">
+                            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('common.add_new')  }}
+                        </button>
+                        <button type="button" class="btn btn-info" data-pagename="user_list" data-btn-type="custom"><i class="fa fa-check-square-o"></i>&nbsp;自定义列</button>
+                    </div>
+                    <div class="input-group col-md-3 pull-right">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('user.user_name')  }}">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
+                        </span>
+                    </div>
                 </div>
-            </form>
-        </div>
-        <div class="text-right  col-xs-8 col-md-9">
-            <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ url('adminUser/add') }}'">
-                <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('common.add_new')  }}
-            </button>
-        </div>
-    </div>
-    <div>
-        <table id="dataTable" class="table table-hover table-striped">
-            <thead>
-            <tr>
-                <th>管理员ID</th>
-                <th>用户名</th>
-                <th>部门</th>
-                <th>是否有效</th>
-                <th>邮箱</th>
-                <th>编辑时间</th>
-                <th>操作</th>
-            </tr>
-            </thead>
 
-        </table>
+                <div class="box-body">
+                    <table id="dataTable" class="table table-hover  table-bordered">
+                        <thead>
+                        <tr>
+                            <th>管理员ID</th>
+                            <th>用户名</th>
+                            <th>部门</th>
+                            <th>是否有效</th>
+                            <th>邮箱</th>
+                            <th>编辑时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
+
 @stop
