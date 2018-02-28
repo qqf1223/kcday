@@ -77,3 +77,10 @@ function delUser(id)
 $("#sSearchSubmit").on('click', function(){
     dataTable.ajax.reload();
 });
+
+
+$("#addnew").on('click',function(){
+    BootstrapDialog.show({
+        message: $('<div></div>').load("test.blade.php")
+    });
+});

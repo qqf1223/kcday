@@ -2,6 +2,46 @@
 @section('css')
     <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet"/>
 @stop
+@section('content')
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h5 class="pull-left">用户列表</h5>
+                    <div class="pull-right" style="margin-left:5px;">
+                        <button type="button" class="btn btn-primary" id="addnew">
+                            <span class="glyphicon glyphicon-plus-sign" ></span> {{ trans('common.add_new')  }}
+                        </button>
+                        {{--<button type="button" class="btn btn-info" data-pagename="user_list" data-btn-type="custom"><i class="fa fa-check-square-o"></i>&nbsp;自定义列</button>--}}
+                    </div>
+                    <div class="input-group col-md-3 pull-right">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('user.user_name')  }}">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <table id="dataTable" class="table table-hover table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th>管理员ID</th>
+                            <th>用户名</th>
+                            <th>部门</th>
+                            <th>是否有效</th>
+                            <th>邮箱</th>
+                            <th>编辑时间</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@stop
 @section('js')
     <script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
@@ -109,47 +149,8 @@
                 ],
             });
         })
+        var addurl = "{{ url('adminUser/add') }}";
     </script>
+
     <script type="text/javascript" src="{{ asset('/js/default/adminUser.js') }}"></script>
-@stop
-@section('content')
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="box">
-                <div class="box-header" style="text-align:right;">
-                    <h5 class="pull-left">用户列表</h5>
-
-                    <div class="pull-right" style="margin-left:5px;">
-                        <button type="button" class="btn btn-primary" onclick="location.href='{{ url('adminUser/add') }}'">
-                            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('common.add_new')  }}
-                        </button>
-                        <button type="button" class="btn btn-info" data-pagename="user_list" data-btn-type="custom"><i class="fa fa-check-square-o"></i>&nbsp;自定义列</button>
-                    </div>
-                    <div class="input-group col-md-3 pull-right">
-                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('user.user_name')  }}">
-                        <span class="input-group-btn">
-                           <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="box-body">
-                    <table id="dataTable" class="table table-hover  table-bordered">
-                        <thead>
-                        <tr>
-                            <th>管理员ID</th>
-                            <th>用户名</th>
-                            <th>部门</th>
-                            <th>是否有效</th>
-                            <th>邮箱</th>
-                            <th>编辑时间</th>
-                            <th>操作</th>
-                        </tr>
-                        </thead>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @stop
