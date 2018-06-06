@@ -1,7 +1,4 @@
 @extends('layouts.main')
-@section('css')
-    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet"/>
-@stop
 @section('content')
     <div class="row">
         <div class="col-xs-12">
@@ -43,8 +40,6 @@
 
 @stop
 @section('js')
-    <script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script>
         var dataTable = null;
         $(function () {

@@ -80,7 +80,8 @@ $("#sSearchSubmit").on('click', function(){
 
 
 $("#addnew").on('click',function(){
-    BootstrapDialog.show({
-        message: $('<div></div>').load("test.blade.php")
-    });
+    //BootstrapDialog.show({
+    //    message: $('<div></div>').load("test.blade.php")
+    //});
+    location.href = "/adminUser/add";
 });

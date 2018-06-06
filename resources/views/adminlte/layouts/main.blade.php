@@ -23,6 +23,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
           apply the skin class to the body tag so the changes take effect. -->
     <link rel="stylesheet" href="/dist/css/skins/skin-blue.min.css">
 
+    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet"/>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -67,7 +69,8 @@ desired effect
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                面板
+                {{--{{ $title }}--}}
+                测试
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -100,7 +103,9 @@ desired effect
 <script src="/dist/js/adminlte.min.js"></script>
 <!-- Application js -->
 <script src="/bower_components/bootstrap-dialog/js/bootstrap-dialog.min.js"></script>
-
+<!-- datatables -->
+<script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
+<script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
 @yield('menu_js')
 @yield('js')
 <!-- Optionally, you can add Slimscroll and FastClick plugins.

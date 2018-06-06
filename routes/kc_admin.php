@@ -75,3 +75,5 @@ Route::group(['middleware'=> ['kcAdmin.login:admin'], 'prefix'=>'api'], function
 Route::group(['prefix'=>''], function(){
     Route::get('chat', 'Chat\IndexController@test');
 });
+
+Route::get('/voice', 'VoiceController@index');

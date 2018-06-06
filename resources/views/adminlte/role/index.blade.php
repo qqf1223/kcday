@@ -1,10 +1,5 @@
 @extends('layouts.main')
-@section('css')
-    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet" />
-@stop
 @section('js')
-    <script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script>
         var dataTable = null;
         $(function(){
@@ -105,38 +100,40 @@
     <script src="{{ asset('/js/default/role.js') }}"></script>
 @stop
 @section('content')
-<div class="row head">
-    <div class="col-xs-4 col-md-3">
-        <form class="form-horizontal">
-            <div class="input-group">
-                <input type="text" class="form-control input-sm" name="sSearch" id="sSearch" placeholder="{{ trans('role.role_name')  }}" >
-                <span class="input-group-btn">
-                    <button class="btn btn-primary btn-sm" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
-                </span>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h5 class="pull-left">{{ trans('role.role_list')  }}</h5>
+                    <div class="pull-right" style="margin-left:5px;">
+                        <button type="button" class="btn btn-primary" onclick="location.href='{{ url('role/add') }}'">
+                            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('role.add_role')  }}
+                        </button>
+                    </div>
+                    <div class="input-group col-md-3 pull-right">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('role.role_name')  }}">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <table id="dataTable" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>{{ trans('common.name') }}</th>
+                            <th>{{ trans('common.description') }}</th>
+                            <th>{{ trans('common.update_time') }}</th>
+                            <th>{{ trans('common.status') }}</th>
+                            <th>{{ trans('common.operation') }}</th>
+                        </tr>
+                        </thead>
+
+                    </table>
+                </div>
             </div>
-        </form>
+        </div>
     </div>
-    <div class="text-right  col-xs-8 col-md-9">
-        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ url('role/add') }}'">
-            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('role.add_role')  }}
-        </button>
-    </div>
-</div>
-
-<div>
-    {{--<table class="table table-bordered table-striped">--}}
-    <table id="dataTable" class="table table-hover">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>{{ trans('common.name') }}</th>
-            <th>{{ trans('common.description') }}</th>
-            <th>{{ trans('common.update_time') }}</th>
-            <th>{{ trans('common.status') }}</th>
-            <th>{{ trans('common.operation') }}</th>
-        </tr>
-        </thead>
-
-    </table>
-</div>
 @stop

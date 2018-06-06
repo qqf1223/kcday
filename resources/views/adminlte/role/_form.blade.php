@@ -11,8 +11,8 @@
 </div>
 <div class="form-group">
     <label class="col-sm-2 control-label" for="description">{{ trans('common.description') }}：</label>
-    <div class="col-sm-7">
-        <textarea class="form-control"  rows="4" cols="16" name="description" id="description">{{ $formType == 'edit' && !old('description') ? $role->description : old('description') }}</textarea>
+    <div class="col-sm-7 col-md-6">
+        <textarea class="form-control"  name="description" id="description">{{ $formType == 'edit' && !old('description') ? $role->description : old('description') }}</textarea>
     </div>
 </div>
 <div class="form-group">

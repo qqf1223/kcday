@@ -10,7 +10,7 @@ class AdminUserController extends KcBaseController
 
     public function index()
     {
-        return view('adminUser.index');
+        return view('adminUser.index', ["title"=>"管理员管理"]);
     }
 
     public function add()

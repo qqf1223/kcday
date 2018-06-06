@@ -19,6 +19,7 @@
                     <li><a href="/adminUser">管理员管理</a></li>
                     <li><a href="/permission">权限管理</a></li>
                     <li><a href="/role">角色管理</a></li>
+                    <li><a href="/role">用户管理</a></li>
                     <li><a href="/setting">系统设置</a></li>
                 </ul>
             </li>

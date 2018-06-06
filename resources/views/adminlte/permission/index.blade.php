@@ -1,10 +1,52 @@
 @extends('layouts.main')
-@section('css')
-    <link href="{{ '/bower_components/datatables/dataTables.bootstrap.css' }}" rel="stylesheet" />
+@section('content')
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h5 class="pull-left">权限列表</h5>
+                    <div class="pull-right" style="margin-left:5px;">
+                        @if(adminAuth('permission.add'))
+                            <button type="button" class="btn btn-primary" onclick="location.href='{{ url('permission/add').'/'.$pid }}'">
+                                <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('permission.add_permission') }}
+                            </button>
+                        @endif
+                        @if($pid)
+                            <button type="button" class="btn btn-primary" onclick="location.href='{{ url('permission/index') .'/' . $parent_permission->pid }}'">
+                                <span class="fa fa-reply"></span> {{ trans('common.go_back') }}
+                            </button>
+                        @endif
+                    </div>
+                    <div class="input-group col-md-3 pull-right">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('permission.permission_name')  }}">
+                        <span class="input-group-btn">
+                           <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="box-body">
+                    <table id="dataTable" class="table table-hover table-striped">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>权限名称</th>
+                            <th>权限规则</th>
+                            <th>菜单</th>
+                            <th>排序</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @stop
+
 @section('js')
-    <script src="{{ asset('/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ asset('/bower_components/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="{{ asset('/js/default/permission.js') }}"></script>
     <script>
         var dataTable = null;
@@ -121,47 +163,4 @@
             });
         })
     </script>
-@stop
-@section('content')
-<div class="row head">
-    <div class="col-xs-4 col-md-3">
-        <form class="form-horizontal">
-            <div class="input-group">
-                <input type="text" class="form-control input-sm" name="sSearch" id="sSearch" placeholder="{{ trans('permission.permission_name') }}" >
-                <span class="input-group-btn">
-                    <button class="btn btn-primary btn-sm" type="button" id="sSearchSubmit">{{ trans('common.search') }}</button>
-                </span>
-            </div>
-        </form>
-    </div>
-    <div class="text-right  col-xs-8 col-md-9">
-        @if(adminAuth('permission.add'))
-        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ url('permission/add').'/'.$pid }}'">
-            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('permission.add_permission') }}
-        </button>
-        @endif
-        @if($pid)
-        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ url('permission/index') .'/' . $parent_permission->pid }}'">
-            <span class="fa fa-reply"></span> {{ trans('common.go_back') }}
-        </button>
-        @endif
-    </div>
-</div>
-
-<div>
-    <table id="dataTable" class="table table-hover table-striped">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>权限名称</th>
-            <th>权限规则</th>
-            <th>菜单</th>
-            <th>排序</th>
-            <th>状态</th>
-            <th>操作</th>
-        </tr>
-        </thead>
-
-    </table>
-</div>
 @stop

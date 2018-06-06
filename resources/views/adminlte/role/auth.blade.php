@@ -2,13 +2,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <div class="box box-primary">
+            <div class="box">
                 <div class="box-header with-border">
                     <div class="box-title">
                         {{ trans('role.auth') }} ：{{$role->name}}
                     </div>
                     <div class="box-tools pull-right">
-                        <button type="button" class="btn btn-primary btn-sm" onclick="location.href='{{ url('role') }}'">
+                        <button type="button" class="btn btn-primary" onclick="location.href='{{ url('role') }}'">
                             <span class="fa fa-reply"></span> {{ trans('common.go_back') }}
                         </button>
                     </div>
