@@ -9,7 +9,8 @@ Route::group(['middleware'=> ['kcAdmin.login:admin','kcAdmin.permission', 'setTh
     Route::get('/', 'Home\IndexController@index');
 
     //系统设置
-    Route::name('system.setting')->get('/setting', 'System\SysController@index');
+    Route::name('system.setting')->get('sys', 'System\SysController@index');
+
     //权限管理
     Route::name('permission.index')->get('permission', 'System\PermissionController@index');
     Route::name('permission.index')->get('permission/index/{id}', 'System\PermissionController@index');
@@ -38,6 +39,9 @@ Route::group(['middleware'=> ['kcAdmin.login:admin','kcAdmin.permission', 'setTh
 Route::post('/login', 'Api\LoginController@login');
 
 Route::group(['middleware'=> ['kcAdmin.login:admin'], 'prefix'=>'api'], function(){
+
+    //系统设置
+    Route::name('system.setting')->post('sys/save', 'Api\SysController@save');
 
     //权限
     Route::name('permission.index')->post('permission/index/{id?}', 'Api\PermissionController@index');

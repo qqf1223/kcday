@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\System;
+namespace App\Http\Controllers\Api;
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\KcApiController;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\View\View;
 
-class SysController extends Controller
+class SysController extends KcApiController
 {
     public $viewData = [];
 
@@ -16,14 +16,12 @@ class SysController extends Controller
 
     }
 
-    public function index()
-    {
-        return view('setting.index', array('viewData' => $this->viewData));
+    public function index(){
+
     }
 
-
     public function save(Request $request){
-        var_dump(11);die;
+        dd(11);die;
         return view('setting.index', array('viewData' => $this->viewData));
     }
 }
