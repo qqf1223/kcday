@@ -19,8 +19,42 @@
                     <li><a href="/adminUser">管理员管理</a></li>
                     <li><a href="/permission">权限管理</a></li>
                     <li><a href="/role">角色管理</a></li>
-                    <li><a href="/role">用户管理</a></li>
+                    <li><a href="/department">部门管理</a></li>
                     <li><a href="/sys">系统设置</a></li>
+                    <li><a href="/sys">日志管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-link"></i> <span>客户管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/users">用户管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-link"></i> <span>文件管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/users">文件管理</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-link"></i> <span>销售管理</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/users">产品类别</a></li>
+                    <li><a href="/users">产品列表</a></li>
+                    <li><a href="/users">订单管理</a></li>
+                    <li><a href="/users">合同管理</a></li>
                 </ul>
             </li>
         </ul>

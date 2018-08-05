@@ -56,13 +56,13 @@ class RoleController extends KcApiController
         return $this->tool->response($result, null, 'json');
     }
 
-    public function auth($id, Request $request)
+    public function auth(Request $request)
     {
-        $id = (int)$id;
+        $id = (int)$request->input('id');
         $perm_ids = $request->input('perm_ids');
 
         $result = $this->_roleService->auth($id, $perm_ids);
 
-        return $this->tool->response($result, 'role/');
+        return $this->tool->response($result, null, 'json');
     }
 }

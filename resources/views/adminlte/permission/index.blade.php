@@ -8,7 +8,7 @@
                     <div class="pull-right" style="margin-left:5px;">
                         @if(adminAuth('permission.add'))
                             <button type="button" class="btn btn-primary" onclick="location.href='{{ url('permission/add').'/'.$pid }}'">
-                                <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('permission.add_permission') }}
+                                <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('system.add_permission') }}
                             </button>
                         @endif
                         @if($pid)
@@ -18,7 +18,7 @@
                         @endif
                     </div>
                     <div class="input-group col-md-3 pull-right">
-                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('permission.permission_name')  }}">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('system.permission_name')  }}">
                         <span class="input-group-btn">
                            <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
                         </span>

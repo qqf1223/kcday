@@ -52,7 +52,7 @@ class PermissionController extends KcBaseController
         $id = (int)$id;
         $permission = $this->_permissionService->permissionData($id);
         if(empty($permission)){
-            return $this->tool->response(['status' => 0, 'msg' => trans('permission.permission_not_exist')], '/permission/index');
+            return $this->tool->response(['status' => 0, 'msg' => trans('system.permission_not_exist')], '/permission/index');
         }
 
         $pid = $permission->pid;

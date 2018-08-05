@@ -33,6 +33,11 @@ Route::group(['middleware'=> ['kcAdmin.login:admin','kcAdmin.permission', 'setTh
     Route::name('adminUser.add')->get('adminUser/add', 'System\AdminUserController@add');
     Route::name('adminUser.edit')->get('adminUser/edit/{id}', 'System\AdminUserController@edit');
     Route::name('adminUser.show')->get('adminUser/show/{id}', 'System\AdminUserController@show');
+
+    //部门管理
+    Route::name('department.index')->get('department', 'System\DepartmentController@index');
+    Route::name('department.add')->get('department/add', 'System\DepartmentController@add');
+    Route::name('department.edit')->get('department/edit/{id}', 'System\DepartmentController@edit');
 });
 
 //api
@@ -61,7 +66,7 @@ Route::group(['middleware'=> ['kcAdmin.login:admin'], 'prefix'=>'api'], function
 
     Route::name('role.delete')->delete('role/delete/{id?}', 'Api\RoleController@delete');
 
-    Route::name('role.auth')->put('role/auth/{id}', 'Api\RoleController@auth');
+    Route::name('role.auth')->post('role/auth', 'Api\RoleController@auth');
 
     //管理员管理
     Route::name('adminUser.index')->post('adminUser', 'Api\AdminUserController@index');

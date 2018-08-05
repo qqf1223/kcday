@@ -193,7 +193,7 @@ class AdminUserService extends KcService
         $admin = $this->adminData($id);
         //验证
         if(empty($admin)){
-            return $this->handleError(trans('permission.permission_not_exist'));
+            return $this->handleError(trans('system.permission_not_exist'));
         } else if($admin->id == 1){
             return $this->handleError('超级管理员不能删除!');
         }

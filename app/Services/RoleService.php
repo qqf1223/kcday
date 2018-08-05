@@ -95,7 +95,6 @@ class RoleService extends KcService
         }
         $role->authorizePermissions($perm_ids);
         //todo 记录事件
-
         return $this->handleSuccess(trans('role.authorization_success'));
     }
 

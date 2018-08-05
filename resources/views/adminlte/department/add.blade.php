@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="box">
             <div class="box-header with-border">
-                <h5 class="pull-left">{{ trans('system.add_role') }}</h5>
+                <h5 class="pull-left">{{ trans('role.add_role') }}</h5>
             </div>
             <div class="box-body no-padding">
                 <form class="form-horizontal" id="roleForm">

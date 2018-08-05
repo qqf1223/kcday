@@ -4,7 +4,7 @@
 @stop
 {{ csrf_field() }}
 <div class="form-group">
-    <label for="name" class="col-sm-2 col-md-2 control-label">{{ trans('system.role_name') }}：</label>
+    <label for="name" class="col-sm-2 col-md-2 control-label">{{ trans('role.role_name') }}：</label>
     <div class="col-sm-7 col-md-6">
         <input id="name" type="text" class="form-control" name="name" value="{{ $formType == 'edit' && !old('name') ? $role->name : old('name') }}" />
     </div>
@@ -26,3 +26,7 @@
         </label>
     </div>
 </div>
+
+<script type="text/javascript">
+
+</script>

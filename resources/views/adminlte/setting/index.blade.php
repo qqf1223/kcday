@@ -166,3 +166,6 @@
 </script>
 <script type="text/javascript" src="{{'plugins/bootstrapSwitch/bootstrapSwitch.js'}}"></script>
 @endsection
+@section("css")
+    <link rel="stylesheet" href="plugins/bootstrapSwitch/bootstrapSwitch.css">
+@endsection

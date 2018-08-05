@@ -5,7 +5,7 @@
             <div class="box">
                 <div class="box-header with-border">
                     <div class="box-title">
-                        {{ trans('system.auth') }} ：{{$role->name}}
+                        {{ trans('role.auth') }} ：{{$role->name}}
                     </div>
                     <div class="box-tools pull-right">
                         <button type="button" class="btn btn-primary" onclick="location.href='{{ url('role') }}'">

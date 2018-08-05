@@ -31,7 +31,7 @@
                         }
                     });
                 },
-                "sAjaxSource": "/api/role/index",
+                "sAjaxSource": "/api/department/index",
                 "iDisplayLength": 10,
                 "oLanguage": {
                     "sProcessing": "正在加载中...",
@@ -78,16 +78,12 @@
                         "render" : function(data, type, row) {
                             if(data > 0) {
                                 var opt_html = '';
-                                @if(adminAuth('system.edit'))
+                                @if(adminAuth('department.edit'))
                                         opt_html += "<a href='{{ url('role/edit') }}/"+data+"' class='X-Small btn-xs text-success'><i class='fa fa-edit'></i> 编辑</a>";
                                 @endif
-                                        @if(adminAuth('system.delete'))
+                                        @if(adminAuth('department.delete'))
                                         opt_html += "<a href='javascript:;' onclick='delRole("+data+")' class='X-Small btn-xs text-danger'><i class='fa fa-times-circle'></i> 删除</a>";
                                 @endif
-                                        @if(adminAuth('system.auth'))
-                                        opt_html += "<a href='{{ url('role/auth') }}/"+data+"'  class='X-Small btn-xs text-purple'><i class='fa fa-leaf'></i> 授权</a>";
-                                @endif
-
                                         return opt_html;
                             }
                         },
@@ -97,21 +93,21 @@
             });
         })
     </script>
-    <script src="{{ asset('/js/default/role.js') }}"></script>
+    <script src="{{ asset('/js/default/department.js') }}"></script>
 @stop
 @section('content')
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h5 class="pull-left">{{ trans('system.role_list')  }}</h5>
+                    <h5 class="pull-left">{{ trans('role.role_list')  }}</h5>
                     <div class="pull-right" style="margin-left:5px;">
                         <button type="button" class="btn btn-primary" onclick="location.href='{{ url('role/add') }}'">
-                            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('system.add_role')  }}
+                            <span class="glyphicon glyphicon-plus-sign"></span> {{ trans('role.add_role')  }}
                         </button>
                     </div>
                     <div class="input-group col-md-3 pull-right">
-                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('system.role_name')  }}">
+                        <input type="text" class="form-control" name="sSearch" id="sSearch" placeholder="{{ trans('role.role_name')  }}">
                         <span class="input-group-btn">
                            <button class="btn btn-primary" type="button" id="sSearchSubmit">{{ trans('common.search')  }}</button>
                         </span>

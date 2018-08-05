@@ -80,11 +80,10 @@ function delRole(id)
     });
 }
 
-$("#save").click(function(){
+$("#auth_save").click(function(){
     var data = $("#authform").serialize();
-    var _url=$("#save").attr('data-url');
-    $.post(_url, data, function(ret){
-        console.log(ret);
+    var _url=$("#auth_save").attr('data-url');
+    $.post(_url, data, function(ret){console.log(ret);
         BootstrapDialog.alert({
             title:'提示',
             size: BootstrapDialog.SIZE_SMALL,

@@ -44,7 +44,7 @@ class PermissionService extends KcService
     {
         $permission = $this->permissionData($id);
         if(empty($permission)){
-            return $this->handleError(trans('permission.permission_not_exist'));
+            return $this->handleError(trans('system.permission_not_exist'));
         }
 
         $form_data['is_menu'] = !isset($form_data['is_menu']) ? 0 : (int)$form_data['is_menu'];
@@ -60,12 +60,12 @@ class PermissionService extends KcService
     public function deletePermission($id)
     {
         $permission = $this->permissionData($id);
-        if(empty($permission)) return $this->handleError(trans('permission.permission_not_exist'));
+        if(empty($permission)) return $this->handleError(trans('system.permission_not_exist'));
 
         //验证是否有子权限
         $sub = $this->permissionModel->where('pid', $id)->first();
         if(!empty($sub)){
-            return $this->handleError(trans('permission.first_del_sub_permission'));
+            return $this->handleError(trans('system.first_del_sub_permission'));
         }
 
         $res = $permission->delete();
